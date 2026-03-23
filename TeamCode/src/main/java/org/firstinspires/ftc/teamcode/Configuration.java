@@ -5,6 +5,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -20,8 +21,8 @@ public class Configuration {
     // Note: Android Studio is highlighting these as they CAN BE local variables,
     //  but we keep them here so we can easily find and change them when needed.
 
-    // Reference to LinearOpMode class (Can also use OpMode)
-    private final LinearOpMode linearOpMode;
+    // Reference to OpMode class (Can also use LinearOpMode)
+    private final OpMode opMode;
 
     // Define Motor(s)
     public DcMotor motor;
@@ -30,15 +31,15 @@ public class Configuration {
     public Servo servo;
 
     // Class Constructor
-    public Configuration(LinearOpMode linearOpMode) {
-        this.linearOpMode = linearOpMode;
+    public Configuration(OpMode opMode) {
+        this.opMode = opMode;
     }
 
     /// Initialization Method
     public void init() {
 
         // HardwareMap Reference
-        HardwareMap hwMap = linearOpMode.hardwareMap;
+        HardwareMap hwMap = opMode.hardwareMap;
 
         // Initialize Motor
         motor = hwMap.get(DcMotor.class, "motor");
