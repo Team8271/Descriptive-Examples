@@ -1,6 +1,4 @@
-/* Universal Configuration!
- * This configuration file defines values that you can use
- */
+// Universal Configuration!
 
 package org.firstinspires.ftc.teamcode;
 
@@ -12,6 +10,14 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class Configuration {
 
+    // Reference to OpMode class (Can also use LinearOpMode)
+    private final OpMode opMode;
+
+    // Class Constructor
+    public Configuration(OpMode opMode) {
+        this.opMode = opMode;
+    }
+
     // Configurable Values
     private final double
             servoActivePosition = 0.8,
@@ -21,23 +27,17 @@ public class Configuration {
     // Note: Android Studio is highlighting these as they CAN BE local variables,
     //  but we keep them here so we can easily find and change them when needed.
 
-    // Reference to OpMode class (Can also use LinearOpMode)
-    private final OpMode opMode;
-
     // Define Motor(s)
     public DcMotorEx motor;
     public DcMotor fl;
     public DcMotor fr;
     public DcMotor bl;
     public DcMotor br;
+    // Note: DcMotorEx is the extended version of DcMotor, it allows the use velocity control when
+    //  using encoders.
 
     // Define Servo(s)
     public Servo servo;
-
-    // Class Constructor
-    public Configuration(OpMode opMode) {
-        this.opMode = opMode;
-    }
 
     /// Initialization Method
     public void init() {
@@ -47,7 +47,7 @@ public class Configuration {
 
         // Initialize Motors
         motor = hwMap.get(DcMotorEx.class, "motor");
-        motor.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
+        motor.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
         motor.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.FLOAT);
 
         fl = hwMap.get(DcMotor.class, "fl");
@@ -95,5 +95,9 @@ public class Configuration {
     //  Just highlight the method or variable name and press Shift+F6,
     //  now type what you want to rename it to, and it will change it
     //  everywhere!
+
+    // TIP: You can hover over variables and classes to see their
+    //  values or documentation. Try hovering over items like,
+    //  RUN_WITHOUT_ENCODER, DcMotorEx, and motorOnPower.
 
 }
