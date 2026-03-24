@@ -22,6 +22,10 @@ public class TeleOpMode extends OpMode {
             startMultiStepProcess();
         }
 
+        if(gamepad1.b) {
+            robot.activateServo();
+        }
+
         telemetry.update();
     }
 
