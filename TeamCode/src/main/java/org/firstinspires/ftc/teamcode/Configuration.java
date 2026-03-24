@@ -4,9 +4,9 @@
 
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -25,7 +25,11 @@ public class Configuration {
     private final OpMode opMode;
 
     // Define Motor(s)
-    public DcMotor motor;
+    public DcMotorEx motor;
+    public DcMotor fl;
+    public DcMotor fr;
+    public DcMotor bl;
+    public DcMotor br;
 
     // Define Servo(s)
     public Servo servo;
@@ -41,10 +45,26 @@ public class Configuration {
         // HardwareMap Reference
         HardwareMap hwMap = opMode.hardwareMap;
 
-        // Initialize Motor
-        motor = hwMap.get(DcMotor.class, "motor");
-        motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        // Initialize Motors
+        motor = hwMap.get(DcMotorEx.class, "motor");
+        motor.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
+        motor.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.FLOAT);
+
+        fl = hwMap.get(DcMotor.class, "fl");
+        fl.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        fl.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+        fr = hwMap.get(DcMotor.class, "fr");
+        fr.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        fr.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+        bl = hwMap.get(DcMotor.class, "bl");
+        bl.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        bl.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+        br = hwMap.get(DcMotor.class, "br");
+        br.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        br.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         // Initialize Servo
         servo = hwMap.get(Servo.class, "servo");
