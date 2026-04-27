@@ -1,6 +1,6 @@
 // Universal Configuration!
 
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.Basic;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
