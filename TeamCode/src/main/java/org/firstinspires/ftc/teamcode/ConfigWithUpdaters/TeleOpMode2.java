@@ -18,15 +18,13 @@ public class TeleOpMode2 extends OpMode {
         driverControl();
 
         if(gamepad1.a) {
-            robot.timedMotorBlips();
+            robot.startMotorBlips();
         }
         if(gamepad1.y) {
             robot.cancelMotorBlips();
         }
         // Continue processing on a time-based method
-        if(robot.getMotorBlipsIsRunning()) {
-            robot.timedMotorBlips();
-        }
+        robot.updateTimedMotorBlips();
 
         if(gamepad1.b) {
             robot.activateServo();

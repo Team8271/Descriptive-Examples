@@ -100,17 +100,21 @@ public class Configuration2 {
         servo.setPosition(servoInactivePosition);
     }
 
+    /// Starts motor blip process if not already running. Use timedMotorBlips to update this process.
+    public void startMotorBlips() {
+        if(!motorBlipRunning) {
+            motorBlipRunning = true;
+            blipOffsetTime = time.seconds(); // Reset the "loop"
+        }
+    }
+
     /**
      * A method that should be called repeatedly in an opMode while getMotorBlipsIsRunning
      * returns true
      * <br><br>
      * Blips the motor in and out every second for 3 seconds
      */
-    public void timedMotorBlips(){
-        if(!motorBlipRunning) {
-            blipOffsetTime = time.seconds(); // Reset the "loop"
-            motorBlipRunning = true;
-        }
+    public void updateTimedMotorBlips(){
         int loopTime = (int) (time.seconds()-blipOffsetTime);
 
         // If time is up or user canceled then stop
